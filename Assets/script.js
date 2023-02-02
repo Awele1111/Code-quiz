@@ -1,18 +1,26 @@
-var startButton = document.querySelector (".start");
-var timerSpan = document.querySelector(".timer");
+var startButton = document.querySelector ("#start");
+var timerSpan = document.querySelector("timer");
 var questionSpace = document.querySelector(".questionSpace");
-var timer = 1
+// var timer = 
 var questionEl = document.querySelector("questionEL");
 var timerCount = 120;
 var scoreCard = document.querySelector("score-card")
 var allScores =[]
-startButton.addEventListener('click', startQuiz);
+startButton.addEventListener('click', function(){
+    var gameTimer = setInterval (function()) {
+        timer--;
+        timerSpan.textContent=timer;
+        if (timer<=0){
+            clearInterval (gameTimer)}
+        }
+    }
+)
 
 function listScores() {
     var storedScores =JSON.parse(localStorage.getItem ("player score"));
     allScores.push (storedScores);
     console.log (allScores[0].player);
-    if (allScores !===[]) {
+    // if (allScores !===[]) {
         for (var i =0; i <5;i++) {
             var li = document.createElement ("li");
             li.textContent =allScores[i].player+ " " +allScores[i].
@@ -20,16 +28,16 @@ function listScores() {
             scoreCard.appendChild(li);
         }
     }
-}
+
 
 function init () {
     listScores();
 }
-startQuiz () {
+//startQuiz () {
 var questions = [
     {
         question: "Which of these options is not a computer language?",
-        choices: ["Baby language", Javascript, Python, c++ ] ,
+        choices: ["Baby language", "Javascript", "Python", "c++"] ,
         answer: "Baby Language"  ,
     },
     {
@@ -54,10 +62,26 @@ function showQuestions() {
     button2.textContent=questions[questioncounter].choices[1]
     button3.textContent=questions[questioncounter].choices[2]
     button4.textContent=questions[questioncounter].choices[3]
-
+}
+button1.addEventListener('click', showQuestions);
+button2.addEventListener('click', showQuestions);
+button3.addEventListener('click', showQuestions);
+button4.addEventListener('click', showQuestions);
 
     questionCounter++
     if (questionCounter==questions.length){
         showResults ()
     }
 
+function startQuiz(){
+    questionSpace.textContent = questions[0].question
+    
+    startTimer();
+    hideStartScreen();
+    showQuestions();
+};
+
+function startTimer(){
+    timer = setInterval 
+    // function()
+}
