@@ -1,20 +1,20 @@
 var startButton = document.querySelector ("#start");
-var timerSpan = document.querySelector("timer");
-var questionSpace = document.querySelector(".questionSpace");
+var timerSpan = document.querySelector("#timer");
+var questionSpace = document.querySelector("#questionEl");
 // var timer = 
-var questionEl = document.querySelector("questionEL");
+var questionEl = document.querySelector("#questionEL");
 var timerCount = 120;
 var scoreCard = document.querySelector("score-card")
 var allScores =[]
 startButton.addEventListener('click', function(){
-    var gameTimer = setInterval (function()) {
-        timer--;
-        timerSpan.textContent=timer;
+    var gameTimer = setInterval (function(){
+        timerCount--
+        timerSpan.textContent=timerCount;
         if (timer<=0){
-            clearInterval (gameTimer)}
+            clearInterval (gameTimer)
         }
-    }
-)
+    },1000)
+})
 
 function listScores() {
     var storedScores =JSON.parse(localStorage.getItem ("player score"));
@@ -68,10 +68,10 @@ button2.addEventListener('click', showQuestions);
 button3.addEventListener('click', showQuestions);
 button4.addEventListener('click', showQuestions);
 
-    questionCounter++
-    if (questionCounter==questions.length){
-        showResults ()
-    }
+    // questionCounter++
+    // if (questionCounter==questions.length){
+    //     showResults ()
+    // }
 
 function startQuiz(){
     questionSpace.textContent = questions[0].question
