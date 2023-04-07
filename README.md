@@ -1,25 +1,27 @@
-# 04 Web APIs: Code Quiz
+# Code-quiz
+In this challenge, I created a code quiz where each student is to answer each question within an alloted time. If the student fails a question, time is deducted from the total time alloted. 
+No starter code was given for this challenge.
 
-## Your Task
+## Description
 
-At some point in your journey to become a full-stack web developer, you’ll likely be asked to complete a coding assessment&mdash;perhaps as part of an interview process. A typical coding assessment includes both multiple-choice questions and interactive coding challenges. 
+The goal of this project is to create a timed quiz application where users are able to take a quiz within an alloted time that stores the scores.
 
-To help familiarize you with these tests and allow you to use the skills covered in this module, this Challenge invites you to build a timed coding quiz with multiple-choice questions. This app will run in the browser and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean, polished, and responsive user interface. 
+## Table of Contents
 
-This week’s coursework will equip you with all the skills you need to succeed in this assignment.
+- [Installation](#installation)
+- [Usage](#usage)
+- [Credits](#credits)
+- [Features](#features)
 
-## User Story
 
-```
-AS A coding boot camp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT I can gauge my progress compared to my peers
-```
+## Installation
 
-## Acceptance Criteria
+This page was accomplished with technologies such as React. In order to add features to the application, I worked on adding features in the component folder of my react. I also utilised react icons. I utilized Tailwind which is a css library as well in order to create the application.
 
-```
-GIVEN I am taking a code quiz
+
+## Usage
+User is able to start the quiz by clicking on button of the first question which starts the timer.
+User is presented with questions. 
 WHEN I click the start button
 THEN a timer starts and I am presented with a question
 WHEN I answer a question
@@ -32,68 +34,46 @@ WHEN the game is over
 THEN I can save my initials and my score
 ```
 
-## Mock-Up
+Below, are screenshots of how my web application currently looks like:
 
-The following animation demonstrates the application functionality:
+![Portfolio](Assets/React-portfolio1.png)
 
-![A user clicks through an interactive coding quiz, then enters initials to save the high score before resetting and starting over.](./Assets/04-web-apis-homework-demo.gif)
+![Portfolio](Assets/React-portfolio2.png)
 
-## Grading Requirements
+![Portfolio](Assets/React-portfolio4.png)
 
-> **Note**: If a Challenge assignment submission is marked as “0”, it is considered incomplete and will not count towards your graduation requirements. Examples of incomplete submissions include the following:
->
-> * A repository that has no code
->
-> * A repository that includes a unique name but nothing else
->
-> * A repository that includes only a README file but nothing else
->
-> * A repository that only includes starter code
+![Portfolio](Assets/React-portfolio5.png)
 
-This Challenge is graded based on the following criteria: 
 
-### Technical Acceptance Criteria: 40%
 
-* Satisfies all of the preceding acceptance criteria.
 
-### Deployment: 32%
 
-* Application deployed at live URL.
 
-* Application loads with no errors.
 
-* Application GitHub URL submitted.
+    
 
-* GitHub repository contains application code.
+## Credits
 
-### Application Quality: 15%
+Class-activities.
 
-* Application user experience is intuitive and easy to navigate.
 
-* Application user interface style is clean and polished.
+## Features
 
-* Application resembles the mock-up functionality provided in the Challenge instructions.
+Features about my project include:
 
-### Repository Quality: 13%
+- Navigation with titles corresponding to different sections of the portfolio.
+- An about me section with recent photo & short bio.
+- A portfolio section with titled images of six applications with links to both desployed applications and corresponding Github repositories.
+- Contact section with contact form that includes fields for a name, an email address, and a message.
+- Experience/Resume section that includes link to downloadable resume
+- Footer that includes icon links to Github and LinkedInprofiles. At the moment, I do not have a linked in profile so i just attached the link to the general Linkedin page. I also do not have a twitter account. However, My Github profile link is attached.
 
-* Repository has a unique name.
+## Links
+Code link: https://github.com/Awele1111/React-Portfolio
 
-* Repository follows best practices for file structure and naming conventions.
+Demo link: https://awele1111.github.io/React-Portfolio/
 
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
 
-* Repository contains multiple descriptive commit messages.
 
-* Repository contains quality readme file with description, screenshot, and link to deployed application.
 
-## Review
 
-You are required to submit BOTH of the following for review:
-
-* The URL of the functional, deployed application.
-
-* The URL of the GitHub repository, with a unique name and a readme describing the project.
-
----
-
-© 2022 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.

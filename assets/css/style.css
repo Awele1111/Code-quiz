@@ -1,0 +1,12 @@
+
+  /* fix link decoration */
+
+*{
+    /* background-color: antiquewhite; */
+    background: rgba(246, 244, 244, 0.718);
+}
+.link-style {
+    text-decoration: none;
+    color: rgb(191, 52, 237);
+    text-align: center;
+};
