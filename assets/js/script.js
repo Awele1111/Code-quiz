@@ -181,12 +181,10 @@ var endQuiz = function() {
         userFinalScoreEl.textContent = numberCorrect * time;
     }, 1000);
 };
-// -----------------------------------------------------------------------------------------------------END QUIZ SECTION //
 
 
 
-
-// 3. SAVE THE HIGHSCORE------------------------------------------------------------------------------------------------ //
+// 3. SAVE THE HIGHSCORE //
 // function to save highscore
 var saveScore = function() {
     // get user initials from text box
@@ -211,15 +209,14 @@ var saveScore = function() {
         highScoreBtn.onclick(location.href = "scorescreen.html");
     };
 };
-// ------------------------------------------------------------------------------------------------END HIGHSCORE SECTION //
 
 
 
 
-// 4. CLICK EVENT LISTENERS--------------------------------------------------------------------------------------------- //
+
+// 4. CLICK EVENT LISTENERS //
 // once user clicks start quiz button, start the quiz
 startBtn.addEventListener("click", startQuiz);
 
 // once the user clicks the save score button, save their highscore
 highScoreBtn.addEventListener("click", saveScore);
-// -------------------------------------------------------------------------------------END CLICK EVENT LISTENER SECTION //
