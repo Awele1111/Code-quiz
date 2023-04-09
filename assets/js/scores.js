@@ -4,7 +4,7 @@ var clearBtn = document.getElementById("clear");
 // -------------------------------------------------------------------------------------------------END VARIABLE SECTION //
 
 
-// 2. HIGH SCORE HANDLER FUNCTIONS-------------------------------------------------------------------------------------- //
+// 2. HIGH SCORE HANDLER FUNCTIONS //
 // function to pull the highscores from localstorage
 var allHighScores = function() {
     // get scores from localstorage
@@ -33,15 +33,14 @@ var clearHighScores = function() {
     window.localStorage.removeItem("allHighScores");
     window.location.reload();
 };
-// -------------------------------------------------------------------------------------END HIGH SCORE HANDLER FUNCTIONS //
 
 
 
 
-// 3. CLICK EVENT LISTENER AND FIRST FUNCTION CALL---------------------------------------------------------------------- //
+
+// 3. CLICK EVENT LISTENER AND FIRST FUNCTION CALL //
 // call highScoreHandler to show list of high scores
 allHighScores();
 
 // clear scores when user clicks clear scores
 clearBtn.addEventListener("click", clearHighScores);
-// -------------------------------------------------------------------END CLICK EVENT LISTENER AND FUNCTION CALL SECTION //
