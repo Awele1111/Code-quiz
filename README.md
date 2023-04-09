@@ -66,7 +66,7 @@ Class-activities.
 ## Links
 Code link: https://github.com/Awele1111/Code-Quiz
 
-Demo link: https://awele1111.github.io/Code-Quiz/
+Demo link: https://awele1111.github.io/Code-quiz/
 
 
 
