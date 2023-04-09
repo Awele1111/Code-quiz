@@ -36,16 +36,13 @@ THEN I can save my initials and my score
 
 Below, are screenshots of how my web application currently looks like:
 
-![Portfolio](Assets/React-portfolio1.png)
-
-![Portfolio](Assets/React-portfolio2.png)
-
-![Portfolio](Assets/React-portfolio4.png)
-
-![Portfolio](Assets/React-portfolio5.png)
 
 
+![Quiz](assets/Quiz3.png)
 
+![Quiz](assets/Quiz2.png)
+
+![Quiz](assets/Quiz1.png)
 
 
 
