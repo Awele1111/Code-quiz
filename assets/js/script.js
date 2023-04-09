@@ -1,5 +1,3 @@
-
-// 1. DEFINING VARIABLES------------------------------------------------------------------------------------------------ //
 // query selector to find HTML elements on the page
 var timerEl = document.getElementById("countdown");
 var introEl = document.getElementById("intro");

@@ -16,7 +16,7 @@ The goal of this project is to create a timed quiz application where users are a
 
 ## Installation
 
-This page was accomplished with technologies such as React. In order to add features to the application, I worked on adding features in the component folder of my react. I also utilised react icons. I utilized Tailwind which is a css library as well in order to create the application.
+This application was accomplished with technologies such as Javascript, HTML & CSS. No necessary installations needed, just click the deployed link below to start/take the quiz
 
 
 ## Usage
@@ -59,19 +59,17 @@ Class-activities.
 
 ## Features
 
-Features about my project include:
-
-- Navigation with titles corresponding to different sections of the portfolio.
-- An about me section with recent photo & short bio.
-- A portfolio section with titled images of six applications with links to both desployed applications and corresponding Github repositories.
-- Contact section with contact form that includes fields for a name, an email address, and a message.
-- Experience/Resume section that includes link to downloadable resume
-- Footer that includes icon links to Github and LinkedInprofiles. At the moment, I do not have a linked in profile so i just attached the link to the general Linkedin page. I also do not have a twitter account. However, My Github profile link is attached.
+- A timed quiz where user can answers within an alloted time.
+- 10 seconds is deducted when user misses a question.
+- Highscores are sstored through local storage.
+- User can clear scores if needed.
+- The application lets user know when a question is  answered correctly or incorrectly.
+- User can retake quiz if needed.
 
 ## Links
-Code link: https://github.com/Awele1111/React-Portfolio
+Code link: https://github.com/Awele1111/Code-Quiz
 
-Demo link: https://awele1111.github.io/React-Portfolio/
+Demo link: https://awele1111.github.io/Code-Quiz/
 
 
 
