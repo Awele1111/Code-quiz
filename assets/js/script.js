@@ -1,6 +1,5 @@
 
 var timeElement = document.querySelector("#countdown");
-var intro = document.querySelector("#intro");
 var beginButton = document.querySelector("#start");
 var questionParent = document.querySelector("#questions");
 var questionPrompt = document.querySelector("#question-prompt");
@@ -8,6 +7,7 @@ var questionChoices = document.querySelector("#question-choices");
 var userAnswerOutcomeParent = document.querySelector("#answer-feedback");
 var userAnswerOutcome = document.querySelector("#answer-outcome");
 var scoreParent = document.querySelector("#score-input");
+var intro = document.querySelector("#intro");
 var userFinalScore = document.querySelector("#user-final-score");
 var userName = document.querySelector("#name");
 var scoreButton = document.querySelector("#score-button");

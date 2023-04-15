@@ -3,7 +3,7 @@ var clearButton = document.querySelector("#clear");
 var scoreListElement = document.querySelector("#score-list");
 var scores = [];
 
-// in the code above, using document.get elementby Id, clearButton, scoreListElement, and scores variables are assigned to clear button and list of scores respectively
+// in the code above, using queryselector, clearButton, scoreListElement, and scores variables are assigned to clear id and score-list id respectively
 
 // function display scores() {
 //     try {
