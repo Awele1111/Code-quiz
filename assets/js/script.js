@@ -1,222 +1,259 @@
-// query selector to find HTML elements on the page
-var timerEl = document.getElementById("countdown");
-var introEl = document.getElementById("intro");
-var startBtn = document.getElementById("start");
-var questionParentEl = document.getElementById("questions")
-var questionPromptEl = document.getElementById("question-prompt");
-var questionChoicesEl = document.getElementById("question-choices");
-var userAnswerOutcomeParentEl = document.getElementById("answer-feedback");
-var userAnswerOutcomeEl = document.getElementById("answer-outcome");
-var highscoreParentEl = document.getElementById("score-input");
-var userFinalScoreEl = document.getElementById("user-final-score");
-var userInitialsEl = document.getElementById("initials");
-var highScoreBtn = document.getElementById("submit-score");
 
-// Counter variables
+var timeElement = document.querySelector("#countdown");
+var intro = document.querySelector("#intro");
+var beginButton = document.querySelector("#start");
+var questionParent = document.querySelector("#questions");
+var questionPrompt = document.querySelector("#question-prompt");
+var questionChoices = document.querySelector("#question-choices");
+var userAnswerOutcomeParent = document.querySelector("#answer-feedback");
+var userAnswerOutcome = document.querySelector("#answer-outcome");
+var scoreParent = document.querySelector("#score-input");
+var userFinalScore = document.querySelector("#user-final-score");
+var userName = document.querySelector("#name");
+var scoreButton = document.querySelector("#score-button");
+
 var questionNumber = 0;
 var numberCorrect = 0;
 
-// timer related variables
-var time = 200;
+var time = 300;
 var timer;
 
-// question array
-questionList = [
-    {
-        question: "What does HTML stand for?",
-        choices: ["HyperText Markup Language", "Hover Text Markup Language", "Half Text Markup Language", "None of the above"],
-        answer: "HyperText Markup Language"
-    },
-    {
-        question: "Which of these options is a data type?",
-        choices: ["Computer", "Number", "Style", "Javascript"],
-        answer: "Number"
-    },
-    {
-        question: "What is the meaning of the abbreviation CSS in programming?",
-        choices: ["Computer Style Sheets", "Cascading Style Sheets", "Computerized Style Sheets", "Challenging Style Sheets"],
-        answer: "Cascading Style Sheets"
-    },
-    {
-        question: "Which of these options is not a computer language?",
-        choices: ["Baby Language", "Javascript", "C++", "Python" ],
-        answer: "Baby Language"
-    },
-    {
-        question: "How many days are in a leap year?",
-        choices: ["300", "350", "365", "366"],
-        answer: "366"
-    }, 
-    {
-        question: "Which of the following signifies an array?",
-        choices: ["[ ]", "{ }", "( )"],
-        answer: "[ ]"
-    }, 
-    
+questionInfo = [
+  {
+    question: "What does HTML stand for?",
+    choices: [
+      "HyperText Markup Language",
+      "Hover Text Markup Language",
+      "Half Text Markup Language",
+      "None of the above",
+    ],
+    answer: "HyperText Markup Language",
+  },
+  {
+    question: "Which of these options is a data type?",
+    choices: ["Computer", "Number", "Style", "Javascript"],
+    answer: "Number",
+  },
+  {
+    question: "What is the meaning of the abbreviation CSS in programming?",
+    choices: [
+      "Computer Style Sheets",
+      "Cascading Style Sheets",
+      "Computerized Style Sheets",
+      "Challenging Style Sheets",
+    ],
+    answer: "Cascading Style Sheets",
+  },
+  {
+    question: "Which of these options is not a computer language?",
+    choices: ["Baby Language", "Javascript", "C++", "Python"],
+    answer: "Baby Language",
+  },
+  {
+    question: "How many days are in a leap year?",
+    choices: ["300 days", "350 days", "365 days", "366 days"],
+    answer: "366 days",
+  },
+  {
+    question: "Which of the following signifies an array?",
+    choices: ["[ ] is an array", "{ } is an array", "( ) is an array"],
+    answer: "[ ] is an array",
+  },
+  {
+    question: "Which of the following signifies an object?",
+    choices: ["[ ] is an object", "{ } is an object ", "( ) is an object"],
+    answer: "{ } is an object",
+  },
+  {
+    question: "Which of the following signifies a function?",
+    choices: ["[ ] is a function", "{ } is a function", "( ) is a function"],
+    answer: "( ) is a function",
+  },
+  
 ];
 
+function shuffleQuestions() {
+  for (var i = questionInfo.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = questionInfo[i];
+    questionInfo[i] = questionInfo[j];
+    questionInfo[j] = temp;
+  }
+}
 
+var time = 300; // 5 minutes in seconds
 
-
-// 2. Running the quiz//
-var startQuiz = function() {
-    // hide the intro
-    introEl.style.display = "none";
-
-    // display the countdown timer
-    timerEl.textContent = time;
-
-    // start the countdown timer
-    timer = setInterval(clock, 1000);
-
-    // begin displaying the questions
-    runQuizQuestions();
+var beginQuizQuestions = function() {
+  var currentQuestion = questionInfo[questionNumber];
+  questionPrompt.textContent = currentQuestion.question;
+  questionChoices.innerHTML = "";
+  for (var i = 0; i < currentQuestion.choices.length; i++) {
+    var choice = currentQuestion.choices[i];
+    var liEl = document.createElement("li");
+    liEl.innerHTML = "<button>" + choice + "</button>";
+    questionChoices.appendChild(liEl);
+  }
+  questionChoices.addEventListener("click", checkAnswer);
 };
 
-var clock = function() {
-    // countdown time 
+// var beginQuiz = function() {
+//   var minutes = Math.floor(time / 60); // converting the seconds to minutes
+//   var seconds = time % 60; //this variable gets the remaining seconds
+//   timeElement.textContent = minutes + ":" + (seconds < 10 ? "0" : "") + seconds; // this is to display time in minutes format
+//   timer = setInterval(function() {
+//     time--;
+//     timeElement.textContent = time;
+//     if (time <= 0) {
+//       stopQuiz();
+//     }
+//   }, 1000);
+//   questionParent.style.display = "";
+//   beginButton.style.display = "none";
+//   shuffleQuestions();
+//   beginQuizQuestions();
+// };
+
+// var beginQuiz = function() {
+//   var minutes = Math.floor(time / 60); // convert seconds to minutes
+//   var seconds = time % 60; // get the remaining seconds
+//   timeElement.textContent = minutes + ":" + (seconds < 10 ? "0" : "") + seconds; // display time in minutes format
+//   timer = setInterval(function() {
+//     time--;
+//     var minutes = Math.floor(time / 60); // convert seconds to minutes
+//     var seconds = time % 60; // get the remaining seconds
+//     timeElement.textContent = minutes + ":" + (seconds < 10 ? "0" : "") + seconds; // update time display in minutes format
+//     if (time <= 0) {
+//       stopQuiz();
+//     }
+//   }, 1000);
+//   questionParent.style.display = "";
+//   beginButton.style.display = "none";
+//   shuffleQuestions();
+//   beginQuizQuestions();
+// };
+
+var beginQuiz = function() {
+  var minutes = Math.floor(time / 60); // convert seconds to minutes
+  var seconds = time % 60; // get the remaining seconds
+  timeElement.textContent = minutes + ":" + (seconds < 10 ? "0" : "") + seconds; // display time in minutes format
+  timer = setInterval(function() {
     time--;
-    // display updated countdown timer
-    timerEl.textContent = time;
-
-    // condition to end quiz if user runs out of time
+    var minutes = Math.floor(time / 60); // convert seconds to minutes
+    var seconds = time % 60; // get the remaining seconds
+    timeElement.textContent = minutes + ":" + (seconds < 10 ? "0" : "") + seconds; // update time display in minutes format
     if (time <= 0) {
-        endQuiz();
-    };
+      stopQuiz();
+    }
+  }, 1000);
+  questionParent.style.display = "";
+  beginButton.style.display = "none";
+  shuffleQuestions();
+  beginQuizQuestions();
 };
 
-var runQuizQuestions = function() {
-    // reset inner text of h2 element 
-    questionPromptEl.innerText = ""
-    
-    // setting inner text of h2 element to be question number
-    questionPromptEl.innerText = questionList[questionNumber].question;
-
-    // clear previous answer choices
-    questionChoicesEl.innerHTML = "";
-
-    // loop through question array
-    for (i = 0; i < questionList[questionNumber].choices.length; i++) {
-        // create element for list item
-        var answerButtonEl = document.createElement("button");
-        
-        // give button styling class
-        answerButtonEl.setAttribute("class", "answer w-75 btn btn-block btn-outline-info");
-        
-        // set list item element content
-        answerButtonEl.innerText = questionList[questionNumber].choices[i];
-
-        // append list item element to div parent
-        questionChoicesEl.appendChild(answerButtonEl);
-    };
-    // listen for a click on any of the buttons
-    questionChoicesEl.addEventListener("click", checkAnswer);
-};
 
 var checkAnswer = function(event) {
-    // hide the feedback display temporarily
-    userAnswerOutcomeParentEl.style.display = "none";
+  userAnswerOutcomeParent.style.display = "none";
 
-    // check if answer is right or wrong
-    // if right
-    if (event.target.innerText === questionList[questionNumber].answer) {
-        // tell user their answer was correct
-        userAnswerOutcomeEl.textContent = "Correct!";
-        userAnswerOutcomeEl.setAttribute("class", "");
+  if (event.target.innerText === questionInfo[questionNumber].answer) {
+    userAnswerOutcome.textContent = "The option you chose is correct!";
+    userAnswerOutcome.setAttribute("class", "");
+    numberCorrect += 1;
+    event.target.style.backgroundColor = "green";
+  } else {
+    userAnswerOutcome.textContent = "Incorrect!";
+    userAnswerOutcome.setAttribute("class", "");
+    time -= 40; // subtract 40 seconds from the timer
+    timeElement.textContent = time;
+    event.target.style.backgroundColor = "red";
+  }
 
-        // reward points for correct answer
-        numberCorrect += 1;
-    
-    // if wrong
+  userAnswerOutcomeParent.style.display = "";
+  setTimeout(function() {
+    userAnswerOutcomeParent.style.display = "none";
+  }, 1000);
+
+  setTimeout(() => {
+    if (questionNumber === (questionInfo.length - 1)) {
+      stopQuiz();
     } else {
-        // tell user their answer was wrong
-        userAnswerOutcomeEl.textContent = "Incorrect!";
-        userAnswerOutcomeEl.setAttribute("class", "");
-        
-        // subtract time from timer
-        time -= 10;
-        // redisplay the updated countdown timer
-        timerEl.textContent = time;
-
-    };
-
-    // allow feedback to be shown for a short interval
-    userAnswerOutcomeParentEl.style.display = "";
-    setTimeout(function() {
-        userAnswerOutcomeParentEl.style.display = "none";
-    }, 1000);
-
-    // ensure feedback is shown before moving on to next question or highscore screen
-    setTimeout(() => {
-        // if question array is complete, run endquiz();
-        if (questionNumber === (questionList.length - 1)) {
-            endQuiz();
-        
-        // else, run next question 
-        } else {
-            // increase question number
-            questionNumber++;
-
-            // loop to next question in the array
-            runQuizQuestions();
-        };
-    }, 1000);
+      questionNumber++;
+      beginQuizQuestions();
+    }
+  }, 1000);
 };
 
+// var stopQuiz = function() {
+//   clearInterval(timer);
+//   setTimeout(function() {
+//     questionParent.style.display = "none";
+//     userAnswerOutcomeParent.style.display = "none";
+//    scoreParent.style.display = "";
+//     userFinalScore.textContent = numberCorrect * time;
+//   }, 1000);
+// };
 
-var endQuiz = function() {
-    // stop the countdown
-    clearInterval(timer);
-
-    // allow the user to get feedback before the question section disappears
-    setTimeout(function() {
-        // hide question section
-        questionParentEl.style.display = "none";
-        userAnswerOutcomeParentEl.style.display = "none";
-
-        // display final score section
-        highscoreParentEl.style.display = "";
-
-        // display final score
-        userFinalScoreEl.textContent = numberCorrect * time;
-    }, 1000);
+var stopQuiz = function() {
+  clearInterval(timer);
+  var totalQuestions = questionInfo.length;
+  var totalScore = numberCorrect / totalQuestions;
+  userFinalScore.textContent = "Your total score is: " + totalScore.toFixed(2);
+  setTimeout(function() {
+    questionParent.style.display = "none";
+    userAnswerOutcomeParent.style.display = "none";
+    scoreParent.style.display = "";
+  }, 1000);
 };
 
+function stopQuiz() {
+  clearInterval(interval);
+  quizContainer.style.display = "none";
+  resultContainer.style.display = "block";
+  let totalScore = 0;
+  let numCorrect = 0;
+  for (let i = 0; i < questions.length; i++) {
+    let userAnswer = userAnswers[i];
+    let answer = questions[i].correctAnswer;
+    if (userAnswer === answer) {
+      numCorrect++;
+      totalScore += 1;
+    }
+  }
+  let minutes = Math.floor(timeLeft / 60);
+  let seconds = timeLeft % 60;
+  resultContainer.innerHTML = `Quiz Complete! You scored ${totalScore}/${questions.length} (${Math.round(totalScore / questions.length * 100)}%) in ${minutes} minutes and ${seconds} seconds. You answered ${numCorrect} questions correctly.`;
+}
 
 
-// 3. SAVE THE HIGHSCORE //
-// function to save highscore
+
 var saveScore = function() {
-    // get user initials from text box
-    var initials = userInitialsEl.value.trim();
+  var name = userName.value.trim();
 
-    // check to see if the value is empty
-    if (initials !== "") {
-        // retrieve scores from local storage, accounting for no scores in localstorage
-        var allHighScores = JSON.parse(window.localStorage.getItem("allHighScores")) || [];
+  if (name !== "") {
+    var allScores =
+      JSON.parse(window.localStorage.getItem("allScores")) || [];
 
-        // create object for current user's score
-        var userHighScore = {
-            score: (numberCorrect * time), 
-            initials: initials
-        };
-
-        // save new object with user's score to localstorage
-        allHighScores.push(userHighScore);
-        window.localStorage.setItem("allHighScores", JSON.stringify(allHighScores));
-
-        // link to high score html page
-        highScoreBtn.onclick(location.href = "scorescreen.html");
+    var userScore = {
+      score: numberCorrect * time,
+      name: name,
     };
+
+    allScores.push(userScore);
+    window.localStorage.setItem(
+      "allScores",
+      JSON.stringify(allScores)
+    );
+
+    scoreButton.onclick = function() {
+      location.href = "scores.html";
+    };
+  }
 };
 
+beginButton.addEventListener("click", beginQuiz);
+scoreButton.addEventListener("click", saveScore);
 
 
 
 
-// 4. CLICK EVENT LISTENERS //
-// once user clicks start quiz button, start the quiz
-startBtn.addEventListener("click", startQuiz);
 
-// once the user clicks the save score button, save their highscore
-highScoreBtn.addEventListener("click", saveScore);

@@ -1,46 +1,88 @@
 
-// 1. DEFINING VARIABLES //
-var clearBtn = document.getElementById("clear");
-// -------------------------------------------------------------------------------------------------END VARIABLE SECTION //
+var clearButton = document.querySelector("#clear");
+var scoreListElement = document.querySelector("#score-list");
+var scores = [];
+
+// in the code above, using document.get elementby Id, clearButton, scoreListElement, and scores variables are assigned to clear button and list of scores respectively
+
+// function display scores() {
+//     try {
+//       scores = JSON.parse(localStorage.getItem("allScores")) || [];
+//     } catch (error) {
+//       console.error("Error parsing high scores:", error);
+//     }
+    
+//     scores.sort((score1, score2) => score2.score - score1.score);
+
+//     var totalQuestions = 8;
+
+//     scoreListElement.innerHTML = scores.map(score => {
+      // var fraction = `${score.score}/${totalQuestions}`;
+      // var percentage = `${((score.score / totalQuestions) * 100).toFixed(0)}%`;
+      // return `<li>${score.name}: ${fraction} (${percentage})</li>`;
+  //   }).join("");
+  // }
+  
+  var clearButton = document.getElementById("clear");
+  var scoreListElement = document.getElementById("score-list");
+  var scores = [];
+  
+  function displayScores() {
+      try {
+          scores = JSON.parse(localStorage.getItem("allScores")) || [];
+      } catch (error) {
+          console.error("Error parsing high scores:", error);
+      }
+  
+      scores.sort((score1, score2) => score2.score - score1.score);
+  
+      scoreListElement.innerHTML = scores.map(score => {
+          var percentage = `${((score.score / 8) * 100).toFixed(0)}%`;
+          return `<li>${score.name}: ${percentage}</li>`;
+      }).join("");
+  }
+  
+  //   in the code above, displayScores() function retrieves scores from local storage using json.parse
+// if there is an error, it displays it to the console
+// join() method is used to concatenate the HTML strings into a single string, which is set as the innerHTML property of scoreListElement.
+
+  function clearScores() {
+      localStorage.removeItem("allScores");
+      window.location.reload();
+  }
+  
+  document.addEventListener("click", event => {
+      if (event.target === clearButton) {
+          clearScores();
+      }
+  });
+  
+  displayScores();
+  
 
 
-// 2. HIGH SCORE HANDLER FUNCTIONS //
-// function to pull the highscores from localstorage
-var allHighScores = function() {
-    // get scores from localstorage
-    var allHighScores = JSON.parse(window.localStorage.getItem("allHighScores")) || [];
+  //   scoreListElement.innerHTML = scores.map(score => {
+  //     return `<li>${score.name}: ${score.score}</li>`;
+  //   }).join("");
+  // }
 
-    // order scores
-    allHighScores.sort(function(x, y) {
-        return y.score - x.score;
-    });
-
-    // function to show the highscores pulled from localstorage
-    allHighScores.forEach(function(score) {
-        // create list item for each high score
-        var scoreItem = document.createElement("li");
-        scoreItem.textContent = score.initials + ": " + score.score;
-
-        // append to parent to display on the page
-        var scoreList = document.getElementById("highscore-list");
-        scoreList.appendChild(scoreItem);
-    });
-};
-
-
-// function to clear the high scores
-var clearHighScores = function() {
-    window.localStorage.removeItem("allHighScores");
-    window.location.reload();
-};
+  // scoreListElement.innerHTML = `<li>Score: ${fraction}</li>`; 
 
 
 
+// function clearScores() {
+//     localStorage.removeItem("allScores");
+//     window.location.reload();
+//   }
+//   in the code above, clearScores() function removes the "allScores" item from localStorage utilizing localStorage.removeItem().
+// the page  is then reloaded window.location.reload().
 
+document.addEventListener("click", event => {
+    if (event.target === clearButton) {
+      clearScores();
+    }
+  });
+//   the function above checks if the event.target property (which is the DOM element that was clicked) is equal to clearButton. If it is, it calls the clearScores() function.
 
-// 3. CLICK EVENT LISTENER AND FIRST FUNCTION CALL //
-// call highScoreHandler to show list of high scores
-allHighScores();
-
-// clear scores when user clicks clear scores
-clearBtn.addEventListener("click", clearHighScores);
+displayScores();
+// the code above is stating that displayScores() function is called to initially display the high scores on the page.

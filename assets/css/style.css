@@ -2,9 +2,44 @@
 *{
     /* background-color: antiquewhite; */
     background: rgba(246, 244, 244, 0.718);
+    font-family: 'Times New Roman', Times, serif;
+    border-style:hidden;
+    border-radius: 10px;
+}
+
+.welcome-button{
+    border-style: hidden;
+    background-color: #0dcaf0;
+    font-size: large;
+    font-weight: 580;
+    padding: 15px;
+    border-radius: 7px; 
+}
+
+.welcome-button:hover{
+    color: white;
+    background:rgb(119, 38, 144);
+}
+.p-container{
+    border-style: hidden;
+    background-color: rgb(119, 38, 144);
+    margin-top: 30px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: aliceblue;
+    padding: 20px;
+    border-radius: 15px;
 }
 .link-style {
     text-decoration: none;
     color: rgb(191, 52, 237);
     text-align: center;
-};
+    border: #0dcaf0;
+    
+}
+
+.start{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.body-container {
+    background: beige;
+}
