@@ -38,11 +38,11 @@ Below, are screenshots of how my web application currently looks like:
 
 
 
-![Quiz](assets/Quiz3.png)
+![Quiz](assets/images/Quiz1.png)
 
-![Quiz](assets/Quiz2.png)
+![Quiz](assets/images/Quiz2.png)
 
-![Quiz](assets/Quiz1.png)
+![Quiz](assets/images/Quiz3.png)
 
 
 
