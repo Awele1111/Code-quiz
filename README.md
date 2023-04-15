@@ -52,7 +52,7 @@ Below, are screenshots of how my web application currently looks like:
 ## Features
 
 - A timed quiz where user can answers within an alloted time.
-- 10 seconds is deducted when user misses a question.
+- Seconds are  deducted when user misses a question.
 - Scores are stored through local storage.
 - User can clear scores if needed.
 - The application lets user know when a question is  answered correctly or incorrectly.
